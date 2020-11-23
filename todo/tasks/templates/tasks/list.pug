@@ -1,0 +1,44 @@
+| {% load static %}
+
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="{% static 'tasks/bulma.css' %}")
+    title To-do
+  body
+    section.hero.is-danger
+      .hero-body
+        .container
+          h1.title To-do list (from pug)
+    section.section
+      .container
+        h3.subtitle To do
+        .columns
+          .column.is-half.is-offset-one-quarter
+            form.field(method="POST", action="/")
+              label.label Enter something to do
+                .control 
+                  | {{form.title}}
+              | {% csrf_token %}
+              button.button.is-primary(type="submit") Submit
+            .table-container
+              table.table.is-striped.is-bordered
+                tr.thead
+                  td Task
+                  td Update
+                  td Remove
+                | {% for task in tasks %}
+                tr.tbody
+                  td
+                    | {% if task.complete %}
+                    strike {{ task }}
+                    | {% else %}
+                    span {{ task }}
+                    | {% endif %}
+                  td
+                    a(href="{% url 'update_task' task.id %}") Update
+                  td
+                    a(href="{% url 'delete' task.id %}") Delete
+                | {% endfor %}

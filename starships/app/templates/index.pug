@@ -1,0 +1,13 @@
+| {% extends 'dist/base.html' %}
+| {% load static %}
+| {% block content %}
+.tile.is-ancestor {% for ship in ships %}
+  .tile.is-parent.is-6
+    //- article.tile.is-child.notification.is-black(style="background-image: url('{{ ship.Image.url }}'); background-size:contain; background-repeat: no-repeat; background-position: right; min-height: 300px;")
+    article.tile.is-child.notification.is-black
+      h1.title {{ship.Name}}
+      h2.subtitle {{ship.Registry}}
+      img(src="{{ ship.Image.url }}")
+    //- img(src="{{ ship.Image.url }}")
+  | {% endfor %} 
+| {% endblock content %}

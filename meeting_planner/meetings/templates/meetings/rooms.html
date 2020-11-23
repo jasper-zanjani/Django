@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+{% block title %}Rooms{%endblock title %}
+
+{% block content %}
+  <h1>Rooms</h1>
+  <table><tbody>
+    <tr><th>Name</th><th>Floor</th><th>Number</th></tr>
+    {% for room in rooms %}
+      <tr>
+        <td>{{room.name}}</td><td>{{room.floor}}</td><td>{{room.room}}</td>
+      </tr>
+    {% endfor %}
+  </tbody></table>
+  <p>
+    <a href="{% url 'home' %}">Home</a>
+  </p>
+{% endblock content %}

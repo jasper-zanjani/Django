@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+Welcome to the new meeting planner!
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+  <h1>Welcome to the meeting planner!</h1>
+  <p>This is the demo application for the course</p>
+  <h2>Meetings</h2>
+  <ul>
+    {% for meeting in meetings %}
+      <li>
+        <a href="{% url 'detail' meeting.id %}">
+          {{meeting.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <p>
+    <a href="{% url 'rooms' %}">Rooms</a>
+  </p>
+
+  <p>
+    <!-- Check out my upcoming tutorial: <br/>
+    <img src="{% static 'website/YouTube thumb.png' %}"> -->
+  </p>
+{% endblock content %}

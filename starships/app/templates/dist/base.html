@@ -1,0 +1,23 @@
+
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'bulma.css'%}"/>
+    <title>🚀🐍 Django Starships</title>
+    <style>.is-ancestor { flex-wrap: wrap; }</style>
+  </head>
+  <body>
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">Starships</h1>
+        </div>
+      </div>
+    </section>
+    <section class="section"> 
+      <div class="container">{% block content %}{% endblock content%}</div>
+    </section>
+  </body>
+</html>

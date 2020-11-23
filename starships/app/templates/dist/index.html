@@ -1,0 +1,12 @@
+
+{% extends 'dist/base.html' %}
+{% load static %}
+{% block content %}
+<div class="tile is-ancestor">{% for ship in ships %}
+  <div class="tile is-parent is-6">
+    <article class="tile is-child notification is-black">
+      <h1 class="title">{{ship.Name}}</h1>
+      <h2 class="subtitle">{{ship.Registry}}</h2><img src="{{ ship.Image.url }}"/>
+    </article>
+  </div>{% endfor %} 
+</div>{% endblock content %}

@@ -1,0 +1,17 @@
+| {% load static %}
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="{% static 'bulma.css'%}")
+    title 🚀🐍 Django Starships
+    style
+      | .is-ancestor { flex-wrap: wrap; }
+  body
+    section.hero.is-primary
+      .hero-body
+        .container
+          h1.title Starships
+    section.section 
+      .container {% block content %}{% endblock content%}

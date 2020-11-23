@@ -1,0 +1,51 @@
+
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'tasks/bulma.css' %}"/>
+    <title>To-do</title>
+  </head>
+  <body>
+    <section class="hero is-danger">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">To-do list (from pug)</h1>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h3 class="subtitle">To do</h3>
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <form class="field" method="POST" action="/">
+              <label class="label">Enter something to do
+                <div class="control">
+                   {{form.title}}</div>
+              </label>{% csrf_token %}
+              <button class="button is-primary" type="submit">Submit</button>
+            </form>
+            <div class="table-container">
+              <table class="table is-striped is-bordered">
+                <tr class="thead">
+                  <td>Task</td>
+                  <td>Update</td>
+                  <td>Remove</td>
+                </tr>{% for task in tasks %}
+                <tr class="tbody">
+                  <td>{% if task.complete %}
+                    <strike>{{ task }}</strike>{% else %}<span>{{ task }}</span>{% endif %}
+                  </td>
+                  <td><a href="{% url 'update_task' task.id %}">Update</a></td>
+                  <td><a href="{% url 'delete' task.id %}">Delete</a></td>
+                </tr>{% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
